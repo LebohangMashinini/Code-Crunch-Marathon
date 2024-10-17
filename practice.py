@@ -32,6 +32,28 @@
 #     "Sunday": 24,
 # }
 
+# list_nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# extended_list_nums = []
+# student_names = ["jason", "james", "jane", "jill", "jerry"]
+
+#Getting the names of the students that got above 50 and print only the students names
+# for name, value in students.items():
+#     if value > 50:
+#         print(name)
+ 
+# for num in list_nums:
+#     extended_list_nums.append(num + num)
+
+# print(extended_list_nums)
+
+# for day, degrees in weather.items():
+#     Fahrenheit = (degrees * 1.8) + 32
+#     Fahrenheit_rounded = "{:.2f}".format(Fahrenheit)
+#     weather[day] = Fahrenheit_rounded
+#     weather.update()
+# print(weather)
+
+
 
 
 
