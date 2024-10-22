@@ -2,8 +2,12 @@ import requests
 from datetime import datetime
 import smtplib
 from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 def get_birthday_data():
     api_url = "https://api.sheety.co/94bfc57e81196c71920460b02f378a1a/birthdays/sheet1"
     response = requests.get(api_url)
@@ -11,13 +15,12 @@ def get_birthday_data():
     if response.status_code == 200:
         data = response.json()
 #loop through the birthday data to see whose birthday is it based on the current date
-        rows = data["sheet1"]
+        return data["sheet1"]
 
 get_birthday_data()
 
 def email_if_birthday():
     sender_email = "palesal613@gmail.com"
-    sender_password = ""
 
 
     today = datetime.today()
@@ -25,11 +28,12 @@ def email_if_birthday():
     print("Today's date:", current_date)
 
 
-    server = smtplib.SMTP_SSL('smtp.googlemail.com', 465)
-    server.login(sender_email, sender_password)
+    server = smtplib.SMTP('smtp.googlemail.com', 587)
+    server.starttls()
+    server.login(sender_email, 'xrsbfmiehpqnsauo')
 
     rows = get_birthday_data()
-
+    there_is_bday = False
     for row in rows:
         receiver_email = {row["email"]}
         if row["birthday"] == current_date:
@@ -37,16 +41,14 @@ def email_if_birthday():
             msg["Subject"] = "Test mail"
             msg["From"] = sender_email
             msg["To"] = receiver_email
-            html = """
-                <h1>HAPPY BIRTHDAY</h1
-            """
-            msg.attach(MIMEText(html, "html"))
 
             #send email
-            server.sendmail(sender_email, receiver_email, msg.as_string())
-            print({row["name"]})
-        else:
-            print("its no one's birthday")
+            server.sendmail(sender_email, receiver_email, "Happy Birthday! Wishing you a day filled with smiles, laughter, and all the good vibes. Enjoy every moment!")
+            print(f"Sent birthday email to {row["name"]}")
+            there_is_bday = True
+            
+    if there_is_bday is not True:
+        print(f"It's no one's birthday today")
             
     server.quit()
 
