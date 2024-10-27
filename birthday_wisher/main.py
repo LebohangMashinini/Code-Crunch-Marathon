@@ -9,8 +9,8 @@ load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 def get_birthday_data():
-    api_url = "https://api.sheety.co/94bfc57e81196c71920460b02f378a1a/birthdays/sheet1"
-    response = requests.get(api_url)
+    API_URL = os.getenv("API_URL")
+    response = requests.get(API_URL)
 
     if response.status_code == 200:
         data = response.json()
