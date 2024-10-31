@@ -33,10 +33,3 @@
 5. Email account with **SMTP access** (e.g., Gmail)
 
 ---
-
-## ⚙️ Installation  
-
-1. **Clone the repository:**  
-   ```bash
-   git clone https://github.com/yourusername/birthday-wisher.git
-   cd birthday-wisher

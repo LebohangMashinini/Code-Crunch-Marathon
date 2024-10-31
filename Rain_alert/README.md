@@ -33,10 +33,3 @@ Before you begin, ensure you have the following installed:
 4. **OpenWeather API Key** – [Generate your key here](https://openweathermap.org/api)
 
 ---
-
-## ⚙️ Installation  
-
-1. **Clone the repository:**  
-   ```bash
-   git clone https://github.com/yourusername/rain-alert.git
-   cd rain-alert
